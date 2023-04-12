@@ -1,0 +1,12 @@
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\bin\Debug\AppLoggerLibrary.dll
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\bin\Debug\AppLoggerLibrary.pdb
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.csproj.AssemblyReference.cache
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.csproj.CoreCompileInputs.cache
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.dll
+C:\Users\kagarwal\OneDrive - WatchGuard Technologies Inc\Desktop\Projects\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.pdb
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\bin\Debug\AppLoggerLibrary.dll
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\bin\Debug\AppLoggerLibrary.pdb
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.csproj.AssemblyReference.cache
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.csproj.CoreCompileInputs.cache
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.dll
+C:\Users\kagarwal\Desktop\codes\Assignments\DSImplementations\AppLoggerLibrary\obj\Debug\AppLoggerLibrary.pdb
