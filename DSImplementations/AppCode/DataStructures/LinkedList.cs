@@ -30,7 +30,6 @@ namespace DSImplementations.AppCode.DataStructures
 
         internal int Count { get; private set; } 
 
-
         private Node<T> Tail { get; set; }
 
         internal LinkList(T value)
