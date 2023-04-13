@@ -8,7 +8,8 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices.ComTypes;
-using DSImplementations.AppCode.DataStructures;
+using DS = AppCode.DataStructures;
+using SA =  AppCode.SortingAlgos;
 
 namespace AppCode
 {
@@ -61,16 +62,15 @@ namespace AppCode
         private static readonly string _logFilePath = directory + "Logs.txt";
         private static readonly Logger _appLogs = new Logger(_logFilePath);
 
-        private static Array<Person> Duplicate(Array<Person> arr)
+        private static DS.Array<Person> Duplicate(DS.Array<Person> arr)
         {
-            var temp = new Array<Person>(arr.Count);
+            var temp = new DS.Array<Person>(arr.Count);
             for(int i=0;i< arr.Count; i++)
             {
                 temp[i] = arr[i];
             }
             return temp;
         }
-        
         private static void ArrayMain()
         {
             var data = Records.GetData();
@@ -78,7 +78,7 @@ namespace AppCode
             Stopwatch sw = Stopwatch.StartNew();
             
             Console.Write("Binding records in array please wait...");
-            Array<Person> array = new Array<Person>(data);
+            DS.Array<Person> array = new DS.Array<Person>(data);
             
             sw.Stop();
             Console.Write("\nTime Taken in binding : " + sw.ElapsedMilliseconds + $" milliseconds\nRecords Fetched : {array.Count} \n\nPress any key to sort according to the age\n\n");
@@ -87,41 +87,41 @@ namespace AppCode
 
             Task bubbleSorted = Task.Run(() => 
             {
-                Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = Duplicate(array);
                 //Console.WriteLine("Bubble sort Started..");
-                Array<Person>.BubbleSort(arr.obj, out TimeSpan time); 
+                SA.Array<Person>.BubbleSort(arr.Obj, out TimeSpan time); 
                 Console.WriteLine("Bubble sort Completed    : " + time.ToString()); 
             });
 
             Task selectionSorted = Task.Run(() =>
             {
-                Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = Duplicate(array);
                 //Console.WriteLine("Selection sort Started..");
-                Array<Person>.SelectionSort(arr.obj, out TimeSpan time);
+                SA.Array<Person>.SelectionSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Selection sort Completed : " + time.ToString());
             });
 
             Task insertionSorted = Task.Run(() =>
             {
-                Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = Duplicate(array);
                 //Console.WriteLine("Insertion sort Started..");
-                Array<Person>.InsertionSort(arr.obj, out TimeSpan time);
+                SA.Array<Person>.InsertionSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Insertion sort Completed : " + time.ToString());
             });
 
             Task mergeSorted = Task.Run(() =>
             {
-                Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = Duplicate(array);
                 //Console.WriteLine("Merge sort Started..");
-                Array<Person>.MergeSort(arr.obj, out TimeSpan time);
+                SA.Array<Person>.MergeSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Merge sort Completed     : " + time.ToString());
             });
 
             Task quickSorted = Task.Run(() =>
             {
-                Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = Duplicate(array);
                 //Console.WriteLine("Quick sort Started..");
-                Array<Person>.QuickSort(arr.obj, out TimeSpan time);
+                SA.Array<Person>.QuickSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Quick sort Completed     : " + time.ToString());
             });
             
@@ -136,56 +136,54 @@ namespace AppCode
             Console.ReadKey();
             
         }
+        
         private static void LinkedListMain()
         {
             var data = Records.GetData();
             Stopwatch sw = Stopwatch.StartNew();
             Console.Write("Binding records in Linked List please wait...");
-            var list = new LinkList<Person>(data);
+            var listMain = new DS.LinkedList<Person>(data);
             sw.Stop();
             Console.Write($"\nTime Taken in binding : " + sw.ElapsedMilliseconds + " milliseconds\n\nPress any key to sort according to the age\n\n");
             Console.ReadKey();
 
-
             Task bubbleSorted = Task.Run(() => 
             {
-                var list1 = new LinkList<Person>(data);
+                var list = new DS.LinkedList<Person>(data);
                 //Console.WriteLine("Bubble sort Started.."); 
-                list1.BubbleSort(out TimeSpan time); 
+                SA.LinkedList<Person,DS.LinkedList<Person>.Node>.BubbleSort(list.Head,out TimeSpan time); 
                 Console.WriteLine("Bubble sort Completed    : " + time.ToString()); 
             });
 
-
-
             Task SelectionSorted = Task.Run(() =>
             {
-                var list1 = new LinkList<Person>(data);
+                var list = new DS.LinkedList<Person>(data);
                 //Console.WriteLine("Selection sort Started.."); 
-                list1.SelectionSort(out TimeSpan time); 
+                SA.LinkedList < Person,DS.LinkedList<Person>.Node >.SelectionSort(list.Head, out TimeSpan time); 
                 Console.WriteLine("Selection sort Completed : " + time.ToString()); 
             });
 
             Task InsertionSorted = Task.Run(() =>
             {
-                var list1 = new LinkList<Person>(data);
+                var list = new DS.LinkedList<Person>(data);
                 //Console.WriteLine("Insertion sort Started.."); 
-                list1.InsertionSort(out TimeSpan time); 
+                SA.LinkedList<Person, DS.LinkedList<Person>.Node>.InsertionSort(list.Head,out TimeSpan time); 
                 Console.WriteLine("Insertion sort Completed : " + time.ToString()); 
             });
 
             Task MergeSorted = Task.Run(() =>
             {
-                var list1 = new LinkList<Person>(data);
+                var list = new DS.LinkedList<Person>(data);
                 //Console.WriteLine("Merge sort Started.."); 
-                list1.MergeSort(out TimeSpan time); 
+                SA.LinkedList<Person, DS.LinkedList<Person>.Node>.MergeSort(list.Head, out TimeSpan time); 
                 Console.WriteLine("Merge sort Completed     : " + time.ToString()); 
             });
 
             Task QuickSorted = Task.Run(() =>
             {
-                var list1 = new LinkList<Person>(data);
+                var list = new DS.LinkedList<Person>(data);
                 //Console.WriteLine("Quick sort Started.."); 
-                list1.QuickSort(out TimeSpan time); 
+                SA.LinkedList<Person, DS.LinkedList<Person>.Node>.QuickSort(list.Head,list.Tail,out TimeSpan time); 
                 Console.WriteLine("Quick sort Completed     : " + time.ToString()); 
             });
 
@@ -200,13 +198,77 @@ namespace AppCode
 
         }
 
+        private static void DoublyLinkedListMain()
+        {
+            var data = Records.GetData();
+            Stopwatch sw = Stopwatch.StartNew();
+            Console.Write("Binding records in Doubly Linked List please wait...");
+            var listMain = new DS.DoublyLinkedList<Person>(data);
+            sw.Stop();
+            Console.Write($"\nTime Taken in binding : " + sw.ElapsedMilliseconds + " milliseconds\n\nPress any key to sort according to the age\n\n");
+            Console.ReadKey();
+
+            Task bubbleSorted = Task.Run(() =>
+            {
+                var list = new DS.DoublyLinkedList<Person>(data);
+                //Console.WriteLine("Bubble sort Started.."); 
+                SA.LinkedList<Person, DS.DoublyLinkedList<Person>.Node>.BubbleSort(list.Head, out TimeSpan time);
+                Console.WriteLine("Bubble sort Completed    : " + time.ToString());
+            });
+
+            Task SelectionSorted = Task.Run(() =>
+            {
+                var list = new DS.DoublyLinkedList<Person>(data);
+                //Console.WriteLine("Selection sort Started.."); 
+                SA.LinkedList<Person, DS.DoublyLinkedList<Person>.Node>.SelectionSort(list.Head, out TimeSpan time);
+                Console.WriteLine("Selection sort Completed : " + time.ToString());
+            });
+
+            Task InsertionSorted = Task.Run(() =>
+            {
+                var list = new DS.DoublyLinkedList<Person>(data);
+                //Console.WriteLine("Insertion sort Started.."); 
+                SA.LinkedList<Person, DS.DoublyLinkedList<Person>.Node>.InsertionSort(list.Head, out TimeSpan time);
+                Console.WriteLine("Insertion sort Completed : " + time.ToString());
+            });
+
+            Task MergeSorted = Task.Run(() =>
+            {
+                var list = new DS.DoublyLinkedList<Person>(data);
+                //Console.WriteLine("Merge sort Started.."); 
+                SA.LinkedList<Person, DS.DoublyLinkedList<Person>.Node>.MergeSort(list.Head, out TimeSpan time);
+                Console.WriteLine("Merge sort Completed     : " + time.ToString());
+            });
+
+            Task QuickSorted = Task.Run(() =>
+            {
+                var list = new DS.DoublyLinkedList<Person>(data);
+                //Console.WriteLine("Quick sort Started.."); 
+                SA.LinkedList<Person, DS.DoublyLinkedList<Person>.Node>.QuickSort(list.Head, list.Tail, out TimeSpan time);
+                Console.WriteLine("Quick sort Completed     : " + time.ToString());
+            });
+
+            bubbleSorted.Wait();
+            SelectionSorted.Wait();
+            InsertionSorted.Wait();
+            MergeSorted.Wait();
+            QuickSorted.Wait();
+
+            Console.Write("\n\nDone with Doubly Linked List press any key to continue");
+            Console.ReadKey();
+
+        }
+
         internal static void Start()
         {
             //CreateData();
 
-            ArrayMain();
+            //ArrayMain();
 
-            LinkedListMain();
+            //LinkedListMain();
+
+            DoublyLinkedListMain();
+
         }
 
 

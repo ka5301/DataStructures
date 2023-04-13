@@ -32,7 +32,6 @@ namespace AppCode
         {
             return Age.CompareTo(other.Age);
         }
-
         public override string ToString()
         {
             return $"{Id,-10}{FirstName,-12} {LastName,-12}{Age,-5}{State,-12}{City,-12}{Phone}";

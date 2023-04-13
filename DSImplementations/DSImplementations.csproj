@@ -102,10 +102,14 @@
   <ItemGroup>
     <Compile Include="AppCode\App.cs" />
     <Compile Include="AppCode\DataStructures\Array.cs" />
+    <Compile Include="AppCode\DataStructures\DoublyLinkedList.cs" />
     <Compile Include="AppCode\DataStructures\LinkedList.cs" />
+    <Compile Include="AppCode\Interfaces\INode.cs" />
     <Compile Include="AppCode\Interfaces\ISortAlgos.cs" />
     <Compile Include="AppCode\Records\Person.cs" />
     <Compile Include="AppCode\Records\Records.cs" />
+    <Compile Include="AppCode\SortingAlgos\Array.cs" />
+    <Compile Include="AppCode\SortingAlgos\LinkedList.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
