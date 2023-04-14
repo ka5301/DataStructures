@@ -1,12 +1,11 @@
-﻿using System;
+﻿using DSImplementations.AppCode.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSImplementations.AppCode.DataStructures
 {
-    internal class Queue<T> where T : IComparable<T>
+    internal class Queue<T> : IQueue<T> where T : IComparable<T>
     {
         private T[] _arr;
         private int _front,_end,_size;
@@ -20,7 +19,6 @@ namespace DSImplementations.AppCode.DataStructures
             _front = 0;
             _end = -1;
         }
-
         public Queue(IEnumerable<T> data)
         {
             _size = data.Count();
@@ -44,7 +42,6 @@ namespace DSImplementations.AppCode.DataStructures
             Count++;
             _arr[++_end] = record;
         }
-
         public T Dequeue()
         {
             if (_front < _end)
@@ -68,7 +65,6 @@ namespace DSImplementations.AppCode.DataStructures
             Console.WriteLine("Your Queue is Empty");
             return default;
         }
-
         public T Peek()
         {
             if (_front > _end)
@@ -76,7 +72,6 @@ namespace DSImplementations.AppCode.DataStructures
                 Console.WriteLine("Your Queue is Empty");
                 return default;
             }
-
             return _arr[_front];
         }
 

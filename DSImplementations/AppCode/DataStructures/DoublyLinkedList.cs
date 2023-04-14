@@ -1,10 +1,7 @@
 ﻿using DSImplementations.AppCode.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppCode.DataStructures
 {
@@ -21,9 +18,9 @@ namespace AppCode.DataStructures
 
             internal Node(T value)
             {
-                this.Value = value;
-                this.Next = null;
-                this.Prev = null;
+                Value = value;
+                Next = null;
+                Prev = null;
             }
 
         }
@@ -31,13 +28,13 @@ namespace AppCode.DataStructures
         internal int Count { get; private set; }
         internal Node Tail { get; set; }
 
-        internal DoublyLinkedList(T value)
+        public DoublyLinkedList(T value)
         {
             Head = new Node(value);
             Tail = Head;
             Count = 1;
         }
-        internal DoublyLinkedList(IQueryable<T> data)
+        public DoublyLinkedList(IEnumerable<T> data)
         {
             foreach (var item in data)
             {
@@ -81,6 +78,7 @@ namespace AppCode.DataStructures
                 Count++;
             }
         }
+        
         internal void Print()
         {
             Node node = Head;

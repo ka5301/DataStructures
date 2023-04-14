@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppCode.SortingAlgos
 {
@@ -15,16 +11,16 @@ namespace AppCode.SortingAlgos
             array[i] = array[j];
             array[j] = temp;
         }
-        public static void BubbleSort(T[] array, out TimeSpan timeTaken)
+        internal static void BubbleSort(T[] array, out TimeSpan timeTaken)
         {
             int n = array.Length;
             Stopwatch sw = Stopwatch.StartNew();
 
             bool flag = true;
-            for (int i = 0; (i < n) && flag; i++)
+            for (int i = 0; i < n && flag; i++)
             {
                 flag = false;
-                for (int j = 0; (j < n - i - 1); j++)
+                for (int j = 0; j < n - i - 1; j++)
                 {
                     if (array[j].CompareTo(array[j + 1]) > 0)
                     {
@@ -37,7 +33,7 @@ namespace AppCode.SortingAlgos
             sw.Stop();
             timeTaken = sw.Elapsed;
         }
-        public static void SelectionSort(T[] array, out TimeSpan timeTaken)
+        internal static void SelectionSort(T[] array, out TimeSpan timeTaken)
         {
             int n = array.Length;
             Stopwatch sw = Stopwatch.StartNew();
@@ -59,7 +55,7 @@ namespace AppCode.SortingAlgos
             sw.Stop();
             timeTaken = sw.Elapsed;
         }
-        public static void InsertionSort(T[] array, out TimeSpan timeTaken)
+        internal static void InsertionSort(T[] array, out TimeSpan timeTaken)
         {
             int n = array.Length;
             Stopwatch sw = Stopwatch.StartNew();
@@ -136,7 +132,7 @@ namespace AppCode.SortingAlgos
                 Merge(array, l, m, r);
             }
         }
-        public static void MergeSort(T[] array, out TimeSpan timeTaken)
+        internal static void MergeSort(T[] array, out TimeSpan timeTaken)
         {
             int n = array.Length;
             Stopwatch sw = Stopwatch.StartNew();
@@ -172,7 +168,7 @@ namespace AppCode.SortingAlgos
                 QuickSort(array, pi + 1, high);
             }
         }
-        public static void QuickSort(T[] array, out TimeSpan timeTaken)
+        internal static void QuickSort(T[] array, out TimeSpan timeTaken)
         {
             int n = array.Length;
             Stopwatch sw = Stopwatch.StartNew();

@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
-using AppCode.Interfaces;
-using Microsoft.Office.Interop.Excel;
 
 namespace AppCode.DataStructures
 {
     internal class Array<T> where T : IComparable<T>
     {
         private readonly T[] _arr;
-        public T this[int i]
+        internal T this[int i]
         {
             get
             {
@@ -26,7 +21,6 @@ namespace AppCode.DataStructures
         }
         
         public T[] Obj { get { return _arr; } }
-        
         public int Count
         {
             get { return _arr.Length; }
@@ -35,7 +29,7 @@ namespace AppCode.DataStructures
         public Array(int n) {
             _arr = new T[n];
         }
-        public Array(IQueryable<T> data)
+        public Array(IEnumerable<T> data)
         {
             int n = data.Count();
             _arr = new T[n];
@@ -47,5 +41,12 @@ namespace AppCode.DataStructures
             //arr = data.ToArray();           
         }
 
+        internal void Print()
+        {
+            for (int i = _arr.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(_arr[i].ToString());
+            }
+        }
     }
 }

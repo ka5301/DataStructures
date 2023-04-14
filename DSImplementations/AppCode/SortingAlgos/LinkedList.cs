@@ -1,28 +1,12 @@
-﻿using DSImplementations.AppCode.Interfaces;
+﻿using AppCode.Interfaces;
+using DSImplementations.AppCode.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppCode.SortingAlgos
 {
-    internal class LinkedList<T,U> where T : IComparable<T> where U : class, INode<T,U>
+    internal static class LinkedList<T,U> where T : IComparable<T> where U : class, INode<T,U>
     {
-        internal class Node
-        {
-            internal T Value { get; set; }
-            internal Node Next { get; set; }
-
-            internal Node(T value)
-            {
-                this.Value = value;
-                this.Next = null;
-            }
-
-        }
-
         private static void Swap(U a, U b)
         {
             T tmp = b.Value;
@@ -231,7 +215,6 @@ namespace AppCode.SortingAlgos
 
             //Print();
         }
-
 
         private static U PartitionLast(U start, U end)
         {

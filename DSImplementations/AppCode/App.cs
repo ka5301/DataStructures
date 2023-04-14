@@ -62,7 +62,7 @@ namespace AppCode
         private static readonly string _logFilePath = directory + "Logs.txt";
         private static readonly Logger _appLogs = new Logger(_logFilePath);
 
-        private static DS.Array<Person> Duplicate(DS.Array<Person> arr)
+        private static DS.Array<Person> DuplicateArray(DS.Array<Person> arr)
         {
             var temp = new DS.Array<Person>(arr.Count);
             for(int i=0;i< arr.Count; i++)
@@ -73,8 +73,27 @@ namespace AppCode
         }
         private static void ArrayMain()
         {
-            var data = Records.GetData();
+            //This is a sample of a array of integers to test and debug the sorting's
+            /*Task sort = Task.Run(() =>
+            {
+                var list = new List<int>() { 53, 77, 47, 90, 13, 88, 27, 89 };
 
+                DS.Array<int> arrayTemp = new DS.Array<int>(list);
+
+                Console.WriteLine("Before sorting - ");
+                arrayTemp.Print();
+
+                Console.WriteLine("Sort Started");
+                SA.Array<int>.InsertionSort(arrayTemp.Obj, out TimeSpan time);
+                Console.WriteLine("Sort Completed : " + time.ToString());
+
+                Console.WriteLine("After sorting - ");
+                arrayTemp.Print();
+
+            });
+            sort.Wait();*/
+
+            var data = Records.GetData();
             Stopwatch sw = Stopwatch.StartNew();
             
             Console.Write("Binding records in array please wait...");
@@ -87,7 +106,7 @@ namespace AppCode
 
             Task bubbleSorted = Task.Run(() => 
             {
-                DS.Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = DuplicateArray(array);
                 //Console.WriteLine("Bubble sort Started..");
                 SA.Array<Person>.BubbleSort(arr.Obj, out TimeSpan time); 
                 Console.WriteLine("Bubble sort Completed    : " + time.ToString()); 
@@ -95,7 +114,7 @@ namespace AppCode
 
             Task selectionSorted = Task.Run(() =>
             {
-                DS.Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = DuplicateArray(array);
                 //Console.WriteLine("Selection sort Started..");
                 SA.Array<Person>.SelectionSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Selection sort Completed : " + time.ToString());
@@ -103,7 +122,7 @@ namespace AppCode
 
             Task insertionSorted = Task.Run(() =>
             {
-                DS.Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = DuplicateArray(array);
                 //Console.WriteLine("Insertion sort Started..");
                 SA.Array<Person>.InsertionSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Insertion sort Completed : " + time.ToString());
@@ -111,7 +130,7 @@ namespace AppCode
 
             Task mergeSorted = Task.Run(() =>
             {
-                DS.Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = DuplicateArray(array);
                 //Console.WriteLine("Merge sort Started..");
                 SA.Array<Person>.MergeSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Merge sort Completed     : " + time.ToString());
@@ -119,7 +138,7 @@ namespace AppCode
 
             Task quickSorted = Task.Run(() =>
             {
-                DS.Array<Person> arr = Duplicate(array);
+                DS.Array<Person> arr = DuplicateArray(array);
                 //Console.WriteLine("Quick sort Started..");
                 SA.Array<Person>.QuickSort(arr.Obj, out TimeSpan time);
                 Console.WriteLine("Quick sort Completed     : " + time.ToString());
@@ -139,10 +158,32 @@ namespace AppCode
         
         private static void LinkedListMain()
         {
+            //This is a sample of a Linked List of integers to test and debug the sorting's
+            /*Task sort = Task.Run(() =>
+            {
+                var list = new List<int>() { 53, 77, 47, 90, 13, 88, 27, 89 };
+
+                var listTemp = new DS.LinkedList<int>(list);
+
+                Console.WriteLine("Before sorting - ");
+                listTemp.Print();
+
+                Console.WriteLine("Sort Started");
+                SA.LinkedList<int, DS.LinkedList<int>.Node>.BubbleSort(listTemp.Head, out TimeSpan time);
+                Console.WriteLine("Sort Completed : " + time.ToString());
+
+                Console.WriteLine("After sorting - ");
+                listTemp.Print();
+
+            });
+            sort.Wait();*/
+
             var data = Records.GetData();
             Stopwatch sw = Stopwatch.StartNew();
+            
             Console.Write("Binding records in Linked List please wait...");
             var listMain = new DS.LinkedList<Person>(data);
+            
             sw.Stop();
             Console.Write($"\nTime Taken in binding : " + sw.ElapsedMilliseconds + " milliseconds\n\nPress any key to sort according to the age\n\n");
             Console.ReadKey();
@@ -197,9 +238,28 @@ namespace AppCode
             Console.ReadKey();
 
         }
-
         private static void DoublyLinkedListMain()
         {
+            //This is a sample of a Linked List of integers to test and debug the sorting's
+            /*Task sort = Task.Run(() =>
+            {
+                var list = new List<int>() { 53, 77, 47, 90, 13, 88, 27, 89 };
+
+                var listTemp = new DS.DoublyLinkedList<int>(list);
+
+                Console.WriteLine("Before sorting - ");
+                listTemp.Print();
+
+                Console.WriteLine("Sort Started");
+                SA.LinkedList<int, DS.DoublyLinkedList<int>.Node>.BubbleSort(listTemp.Head, out TimeSpan time);
+                Console.WriteLine("Sort Completed : " + time.ToString());
+
+                Console.WriteLine("After sorting - ");
+                listTemp.Print();
+
+            });
+            sort.Wait();*/
+
             var data = Records.GetData();
             Stopwatch sw = Stopwatch.StartNew();
             Console.Write("Binding records in Doubly Linked List please wait...");
@@ -259,6 +319,166 @@ namespace AppCode
 
         }
 
+        private static void StackMain()
+        {
+            //This is a sample of a stack of integers to test and debug the sorting's
+            /*Task sort = Task.Run(() =>
+            {
+                var list = new List<int>() { 53, 77, 47, 90, 13, 88, 27, 89 };
+
+                DS.Stack<int> stackTemp = new DS.Stack<int>(list);
+
+                Console.WriteLine("Before sorting - ");
+                stackTemp.Print();
+
+                Console.WriteLine("Sort Started");
+                SA.Stack<DS.Stack<int>, int>.InsertionSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Sort Completed : " + time.ToString());
+
+                Console.WriteLine("After sorting - ");
+                stackTemp.Print();
+
+            });
+            sort.Wait();*/
+
+
+            var data = Records.GetData();
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Console.Write("Binding records in stack please wait...");
+            DS.Queue<Person> stack = new DS.Queue<Person>(data);
+
+            sw.Stop();
+            Console.Write("\nTime Taken in binding : " + sw.ElapsedMilliseconds + $" milliseconds\nRecords Fetched : {stack.Count} \n\nPress any key to sort according to the age\n\n");
+            Console.ReadKey();
+
+
+            Task BubbleSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.BubbleSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Bubble sort Completed : " + time.ToString());
+            });
+
+            Task selectionSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.SelectionSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Selection sort Completed : " + time.ToString());
+            });
+
+            Task insertionSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.InsertionSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Insertion sort Completed : " + time.ToString());
+            });
+
+            Task mergeSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.MergeSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Merge sort Completed : " + time.ToString());
+
+            });
+
+            Task quickSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.QuickSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Quick sort Completed : " + time.ToString());
+            });
+
+            BubbleSorted.Wait();
+            selectionSorted.Wait();
+            insertionSorted.Wait();
+            quickSorted.Wait();
+            mergeSorted.Wait();
+
+            Console.Write("\n\nDone with stack press any key to continue\n\n");
+            Console.ReadKey();
+        }
+
+        private static void QueueMain()
+        {
+            //This is a sample of a stack of integers to test and debug the sorting's
+            Task sort = Task.Run(() =>
+            {
+                var list = new List<int>() { 53, 77, 47, 90, 13, 88, 27, 89 };
+
+                DS.Queue<int> queueTemp = new DS.Queue<int>(list);
+
+                Console.WriteLine("Before sorting - ");
+                queueTemp.Print();
+
+                Console.WriteLine("Sort Started");
+                SA.Queue<DS.Queue<int>, int>.InsertionSort(queueTemp, out TimeSpan time);
+                Console.WriteLine("Sort Completed : " + time.ToString());
+
+                Console.WriteLine("After sorting - ");
+                queueTemp.Print();
+
+            });
+            sort.Wait();
+
+
+            var data = Records.GetData();
+            Stopwatch sw = Stopwatch.StartNew();
+
+            Console.Write("Binding records in Queue please wait...");
+            DS.Queue<Person> stack = new DS.Queue<Person>(data);
+
+            sw.Stop();
+            Console.Write("\nTime Taken in binding : " + sw.ElapsedMilliseconds + $" milliseconds\nRecords Fetched : {stack.Count} \n\nPress any key to sort according to the age\n\n");
+            Console.ReadKey();
+
+
+            Task BubbleSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> queueTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.BubbleSort(queueTemp, out TimeSpan time);
+                Console.WriteLine("Bubble sort Completed : " + time.ToString());
+            });
+
+            Task selectionSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> queueTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.SelectionSort(queueTemp, out TimeSpan time);
+                Console.WriteLine("Selection sort Completed : " + time.ToString());
+            });
+
+            Task insertionSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> queueTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.InsertionSort(queueTemp, out TimeSpan time);
+                Console.WriteLine("Insertion sort Completed : " + time.ToString());
+            });
+
+            Task mergeSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> queueTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.MergeSort(queueTemp, out TimeSpan time);
+                Console.WriteLine("Merge sort Completed : " + time.ToString());
+
+            });
+
+            Task quickSorted = Task.Run(() =>
+            {
+                DS.Queue<Person> stackTemp = new DS.Queue<Person>(data);
+                SA.Queue<DS.Queue<Person>, Person>.QuickSort(stackTemp, out TimeSpan time);
+                Console.WriteLine("Quick sort Completed : " + time.ToString());
+            });
+
+            BubbleSorted.Wait();
+            selectionSorted.Wait();
+            insertionSorted.Wait();
+            quickSorted.Wait();
+            mergeSorted.Wait();
+
+            Console.Write("\n\nDone with stack press any key to continue\n\n");
+            Console.ReadKey();
+        }
+
         internal static void Start()
         {
             //CreateData();
@@ -267,10 +487,12 @@ namespace AppCode
 
             //LinkedListMain();
 
-            DoublyLinkedListMain();
+            //DoublyLinkedListMain();
+
+            StackMain();
 
         }
-
+        
 
 
 

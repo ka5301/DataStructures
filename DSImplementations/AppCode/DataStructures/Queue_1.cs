@@ -1,29 +1,25 @@
-﻿using System;
+﻿using DSImplementations.AppCode.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DSImplementations.AppCode.DataStructures
+namespace AppCode.DataStructures
 {
-    internal class Stack<T> where T : IComparable<T>
+    internal class Queue<T> : IStack<T> where T : IComparable<T>
     {
+        private int _index;
+        private int _size;
         private T[] _arr;
         
-        private int _index;
-
-        private int _size;
-
         public int Count { get; private set; }
-        public Stack() {
+        
+        public Queue() {
             Count = 0;
-            _size = 10;
+            _size = 2;
             _index = -1;
             _arr = new T[_size];    
         }
-
-        public Stack(IEnumerable<T> data)
+        public Queue(IEnumerable<T> data)
         {
             Count = 0;
             _index = -1;
@@ -38,15 +34,15 @@ namespace DSImplementations.AppCode.DataStructures
 
         public void Push(T record)
         {
-            if (_index == _size)
+            if (_index == _size-1)
             {
                 _size *= 2;
                 Array.Resize(ref _arr, _size);
             }
+
             Count++;
             _arr[++_index] = record;
         }
-
         public T Pop()
         {
             if (_index == -1)
@@ -60,7 +56,6 @@ namespace DSImplementations.AppCode.DataStructures
             Count--;
             return record;
         }
-
         public T Top()
         {
             if (_index == -1)
@@ -71,6 +66,14 @@ namespace DSImplementations.AppCode.DataStructures
 
             T record = _arr[_index];
             return record;
+        }
+
+        internal void Print()
+        {
+            for(int i= _arr.Length -1; i>=0;i--)
+            {
+                Console.WriteLine(_arr[i].ToString());
+            }
         }
     }
 }
